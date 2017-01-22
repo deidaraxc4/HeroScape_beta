@@ -7,17 +7,18 @@ import java.util.*;
  *
  */
 public class Engine {
-	Hero hero1 = null;
-	Hero hero2 = null;
+	static Hero hero1 = null;
+	static Hero hero2 = null;
 	
 	public static void main(String[] args) {
 		
 		intro();
 		//Players select the class
+        System.out.println("Player 1 select a class: Warrior, Mage, Ranger ");
 		heroSelect1();
+        System.out.println("Player 2 select a class: Warrior, Mage, Ranger ");
 		heroSelect2();
-        //battle simulator
-	        
+        //battle simulator();
 		
 		
         
@@ -31,19 +32,50 @@ public class Engine {
         System.out.println("For help with commands type in 'help'");
         System.out.println();
     }
-	
+	/**
+	 * Generates a random number between the min and max, inclusive.
+	 * @param min
+	 * @param max
+	 * @return
+	 */
 	public static int rngGen(int min, int max) {
 		return min + (int)(Math.random() * (max - min + 1));
 	}
-	
+	/**
+	 * Loop to start the battle between heroes.
+	 */
+	public void battleSimulator() {
+		Scanner scanner = new Scanner(System.in);
+		while(hero1.isAlive()==true || hero2.isAlive()==true) {
+	    	displayOptions(hero1);
+	    	String p = scanner.next();
+	    	applyMove(p);
+	    	displayOptions(hero2);
+	    	String q = scanner.next();
+	    	applyMove(q);
+	    	
+	    }
+	}
+	/**
+	 * Displays what options a Hero can do.
+	 * @param player
+	 */
 	public void displayOptions(Hero player) {
 		//How to check what subclass the superclass player is?
-		if(hero1.getClass()==Mage) {//this doesn't work
-			//display mage options
+		if(hero1.getClass()==Mage) {
+			
 		}
 	}
-	
-	public void heroSelect1() {
+	/**
+	 * Takes user input and applies the effects of the move selected.
+	 */
+	public void applyMove(String i) {
+		
+	}
+	/**
+	 * Creates what subclass the superclass hero1 will be
+	 */
+	public static void heroSelect1() {
 		Scanner scanner = new Scanner(System.in);
 		String p = scanner.next();
         if(p.equals("Warrior")) {
@@ -54,8 +86,10 @@ public class Engine {
         	hero1 = new Ranger(110,0,10,5);
         }
 	}
-	
-	public void heroSelect2() {
+	/**
+	 * Creates what subclass the superclass hero2 will be
+	 */
+	public static void heroSelect2() {
 		Scanner scanner = new Scanner(System.in);
 		String p = scanner.next();
         if(p.equals("Warrior")) {
