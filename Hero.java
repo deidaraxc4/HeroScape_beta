@@ -9,6 +9,14 @@ public class Hero {
 		
 	}
 	
+	public boolean isAlive() {
+		if(this.getHealth()>=0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
 	//Getters
 	public int getHealth() {
 		return health;
